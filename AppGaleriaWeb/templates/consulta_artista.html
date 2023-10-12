@@ -1,0 +1,44 @@
+{% extends 'pagina_inicio.html' %}
+{% block contenidoNuevo %}
+<div class="container">
+    <h1 class="titulo-centrado">Consultas</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" action="{% url 'enviar_consulta_artista' %}?artista_id={{ artista.id }}{% if obra %}&obra_id={{ obra.id }}{% endif %}">
+
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="nombreCompleto">Artista:</label>
+                    <input type="text" class="form-control" id="nombreCompleto" value="{{ artista.nombreArtista }} {{ artista.apellidoArtista }}" readonly>
+                </div>
+                
+                {% if obra %}
+                    <div class="form-group">
+                        <label for="obra">Obra:</label>
+                        <input type="text" class="form-control" id="obra" value="{{ obra.titulo }}" readonly>
+                    </div>
+                {% endif %}
+                
+                <div class="form-group">
+                    <label for="nombreCompleto">Nombre Completo:</label>
+                    <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock contenidoNuevo %}

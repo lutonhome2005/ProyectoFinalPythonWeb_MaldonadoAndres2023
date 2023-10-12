@@ -1,0 +1,54 @@
+{% extends 'pagina_inicio.html' %}
+{% block contenidoNuevo %}
+{% load static %}
+<h1 class="titulo-centrado titulo-artistico">Registrar</h1>
+<div class="row">
+    {% if user.is_authenticated %}
+        <div class="col-md-3 mx-auto">
+            <a href="{% url 'formularioAltaArtista' %}" class="text-decoration-none">
+                <div class="card mb-3">
+                    <img src="{% static 'images/artista1.jpg' %}" alt="Artistas" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">Artistas</h5>
+                        <p class="card-text">Regístrese como artista</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mx-auto">
+            <a href="{% url 'formularioAltaObraArte1' %}" class="text-decoration-none">
+                <div class="card mb-3">
+                    <img src="{% static 'images/obras_de_arte.jpg' %}" alt="Obras" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">Obras</h5>
+                        <p class="card-text">Registre sus obras de arte</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+</div>
+    {% else %}
+    <div class="menu">
+        <div class="center-content text-center"> 
+            <img src="{% static 'images/accesoDenegado_.png' %}" alt="Acceso Denegado" style="width: 30%;" class="mx-auto d-block"> 
+            <br>
+            <br>
+            <h1 class="titulo-centrado">Inicie sesión para registrarse como artista</h1>
+        </div>
+    </div>    {% endif %}
+
+<style>
+    .titulo-artistico {
+        font-family: 'Your-Font-Name', cursive; 
+        font-size: 36px; 
+        color: #ff5733; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto personalizada */
+    }
+    .center-content {
+        background-color: white; /* Establece el fondo en blanco */
+        text-align: center; /* Centra el contenido horizontalmente */
+        padding: 20px; /* Agrega espaciado alrededor del contenido */
+    }
+</style>
+
+{% endblock contenidoNuevo %}
